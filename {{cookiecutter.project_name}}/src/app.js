@@ -12,9 +12,9 @@ exports.lambdaHandler = async (eventObject, context) => {
 
 
   console.log('creating entry', inputBucket, key, 'to', TABLE_NAME);
-  var data
+  var data = []
   data['key']=key
-  data[HASHKEY_KEY]=Date.now()
+  data[HASHKEY_KEY]=Date.now().toISOString().split('T')[0]
   data[RANGE_KEY]=inputBucket
 
   var params = {
