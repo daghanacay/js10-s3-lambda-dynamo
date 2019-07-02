@@ -89,3 +89,11 @@ Outputs:
   DynamoDBTableStreamArn:
     Value: !GetAtt DynamoDBTable.StreamArn
     Description: The ARN of your DynamoDB Table Stream
+  InputS3BucketARN:
+    Description: "Input Bucket ARN"
+    Value: !GetAtt InputS3Bucket.Arn
+    # exprot this so it can be used externally
+      Export: 
+        Name: InputBucketArnExport 
+  
+  

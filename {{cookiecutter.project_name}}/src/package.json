@@ -1,6 +1,6 @@
 {
   "name": "copy_lambda",
-  "config": {"s3bucket":"deployment-sam-js10-lambda-dynamo",
+  "config": {"s3bucket":"common-sam-deployment-package",
   "stackname":"s3-lambda-dynamo"},
   "version": "1.0.0",
   "description": "hello world sample for NodeJS",
