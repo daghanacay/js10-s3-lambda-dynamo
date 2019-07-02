@@ -83,6 +83,8 @@ Outputs:
   InputS3Bucket:
     Description: "Input Bucket name"
     Value: !Ref InputS3Bucket
+    Export:
+      Name: InputS3BucketNameExport
   DynamoDBTableArn:
     Value: !GetAtt DynamoDBTable.Arn
     Description: The ARN of your DynamoDB Table
@@ -93,7 +95,7 @@ Outputs:
     Description: "Input Bucket ARN"
     Value: !GetAtt InputS3Bucket.Arn
     # exprot this so it can be used externally
-      Export: 
-        Name: InputBucketArnExport 
+    Export: 
+      Name: InputBucketArnExport 
   
   
