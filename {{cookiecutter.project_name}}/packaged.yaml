@@ -38,7 +38,7 @@ Outputs:
       - Arn
 Parameters:
   DynamoDBTableName:
-    Default: s3-lambda-dynamo-table
+    Default: s3-lambda-dynamo-next
     MinLength: 3
     Type: String
   InputS3BucketName:
@@ -47,12 +47,12 @@ Parameters:
     Type: String
 Resources:
   AddToDynamoLambdaFunction:
-    Environment:
-      Variables:
-        TABLE_NAME:
-          Ref: DynamoDBTableName
     Properties:
-      CodeUri: s3://deployment-sam-js10-lambda-dynamo/7ddc1ad3a4df6b008406fbc99ab459d0
+      CodeUri: s3://deployment-sam-js10-lambda-dynamo/b2748eaa7c0257b95c0325e4a3c46dd4
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: DynamoDBTableName
       Events:
         FileUploadTrigger:
           Properties:
@@ -65,6 +65,9 @@ Resources:
       - S3ReadPolicy:
           BucketName:
             Ref: InputS3BucketName
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: DynamoDBTableName
       Runtime: nodejs10.x
     Type: AWS::Serverless::Function
   DynamoDBTable:
